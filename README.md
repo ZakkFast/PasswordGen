@@ -33,5 +33,3 @@ and user will be asked to try again</i>
 <img src='Develop\Password-Generator.gif'>
 
 
-
-
