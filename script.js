@@ -14,7 +14,7 @@ const arrayOfSym = Array.from(String(symbols), String)
 
 //Super Awesome Magic Randomizer
 
-// Write password to the #password input
+// // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -43,29 +43,29 @@ function generatePassword(){
     alert('You must select at least one type of character to generate password. Please try again.')
     generatePassword();
   }
+  
+  var password = [];
+  
+  if (upperCheck) {
+    password = password.concat(arrayOfAlphaUpper)
+  }
+  if (lowercheck) {
+    password = password.concat(arrayOfAlphaLower)
+  }
+  if (numCheck) {
+    password = password.concat(arrayOfNums)
+  }
+  if (symCheck) {
+    password = password.concat(arrayOfSym)
+  }
+  
+  var randomizedPassword = ''
+  
+  for(i = 0; i < confirm.length; i++) {
+    randomizedPassword = randomizedPassword + password[Math.floor(Math.floor() * randomizedPassword.length)]
+  }
+  console.log(randomizedPassword)   
 }
-
-let password = [];
-
-if (upperCheck) {
-  password = password.concat(arrayOfAlphaUpper)
-}
-if (lowercheck) {
-  password = password.concat(arrayOfAlphaLower)
-}
-if (numCheck) {
-  password = password.concat(arrayOfNums)
-}
-if (symCheck) {
-  password = password.concat(arrayOfSym)
-}
-
-let randomizedPassword = ''
-
-for(i = 0; i < confirm.length; i++) {
-  randomizedPassword = randomizedPassword + password[Math.floor(Math.floor() * randomizedPassword.length)]
-}
-
 
 
 // Add event listener to generate button
