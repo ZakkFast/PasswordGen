@@ -3,7 +3,7 @@
 
 ## What it does
 <pre>
-Password Generator with a sense of humor* used to create a unique password depending on user chose of the following
+Password Generator used to create a unique password depending on user chose of the following
 critera.
 <ul>
 <li>Length of characters between 8-128.</li>
@@ -33,17 +33,5 @@ and user will be asked to try again</i>
 <img src='Develop\Password-Generator.gif'>
 
 
-# Notes to Grader
-<pre>
-Hopefully you wont dock me for lack of commits. Did this in 
-one go in about 30 minutes while listening to Led Zeppelin and
-drinking my 6th cup of coffee for the day. Due to this I didn't 
-think to commit as I went along. 
 
-* I hope you have a sense of humor or Im screwed. While in a 
-professional setting I would never take such liberites making this 
-app so silly but, this will never see the light of day outside of 
-you and I. Lord only know how many 'Password Generators' you've
-seen today so hopefully this one at least broke the monotony.
-</pre>
 
