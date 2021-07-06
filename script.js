@@ -1,4 +1,4 @@
-const generateBtn = document.querySelector("#generate").addEventListener('click', writePassword);
+var generateBtn = document.querySelector("#generate").addEventListener('click', writePassword);
 
 //Characters to be used in generation of password
 const numbers = ['123456789']
@@ -15,8 +15,8 @@ const arrayOfSym = Array.from(String(symbols), String)
 
 // // Write password to the #password input
 function writePassword() {
-  const password = generatePassword();
-  const passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
   passwordText.textContent = password; 
 }
 
@@ -24,10 +24,10 @@ function writePassword() {
 // Function to collect conditions for password
 function generatePassword(){
   //Prompt to collect length of password used in Generation Section
-  const checkLength = prompt('Please select the desired length of your password. (Between 8 and 128 characters)')
+  let checkLength = prompt('Please select the desired length of your password. (Between 8 and 128 characters)')
   //If selection isnt between required parameters restarts function
   while(checkLength <= 7 || checkLength >= 129 || checkLength === NaN) {
-    alert('Password length out of paramters. Defaulting to a lenght of 12')
+    alert('Password length out of paramters. Defaulting to a length of 12')
     checkLength = 12
   }
   //Collects user's choice of character types to be used in generation
@@ -37,7 +37,7 @@ function generatePassword(){
   let symCheck = confirm('Would you like to use symbols in this password?')
   //Checks if at least one choice was made. If password cannot generate will restart function
   while(upperCheck === false && lowercheck === false && numCheck === false && symCheck === false) {
-    alert('No values were selected. Defaulting to all characyer types')
+    alert('No values were selected. Defaulting to all character types')
     upperCheck = true;
     lowercheck = true;
     numCheck = true;
@@ -58,12 +58,12 @@ function generatePassword(){
   if (symCheck) {
     passwordChar = passwordChar.concat(arrayOfSym)
   }
-  //Initialize randomPassword varible
-  let randomizedPassword;
+  
+  let randomizedPassword = ''
   //Generates password with above information based on length chosen in first section of generatePassword Function
   for(i = 0; i < checkLength; i++) {
     randomizedPassword = randomizedPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)]
-  } //Returns completed password for use in writePassword function.
+  } //returns completed password for use in writePassword function.
   return randomizedPassword
 }
 

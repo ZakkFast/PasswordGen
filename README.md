@@ -30,6 +30,6 @@ critera.
 and user will be asked to try again</i>
 </pre>
 
-<img src='Develop\Password-Generator.gif'>
+<img src='Password-Generator.gif'>
 
 
