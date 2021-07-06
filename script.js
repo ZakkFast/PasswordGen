@@ -1,4 +1,4 @@
-var generateBtn = document.querySelector("#generate").addEventListener('click', writePassword);
+const generateBtn = document.querySelector("#generate").addEventListener('click', writePassword);
 
 //Characters to be used in generation of password
 const numbers = ['123456789']
@@ -15,8 +15,8 @@ const arrayOfSym = Array.from(String(symbols), String)
 
 // // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
   passwordText.textContent = password; 
 }
 
@@ -26,24 +26,25 @@ function generatePassword(){
   //Prompt to collect length of password used in Generation Section
   const checkLength = prompt('Please select the desired length of your password. (Between 8 and 128 characters)')
   //If selection isnt between required parameters restarts function
-  if(checkLength <= 7 || checkLength >= 129) {
-    alert('Please select a value between 8 and 128')
-    generatePassword()
+  while(checkLength <= 7 || checkLength >= 129 || checkLength === NaN) {
+    alert('Password length out of paramters. Defaulting to a lenght of 12')
+    checkLength = 12
   }
   //Collects user's choice of character types to be used in generation
-  const upperCheck = confirm('Would you like to use upper case letters in this password?')
-  const lowercheck = confirm('Would you like to use lower case letters in this password?')
-  const numCheck = confirm('Would you like to use numbers in this password?')
-  const symCheck = confirm('Would you like to use symbols in this password?')
-  
+  let upperCheck = confirm('Would you like to use upper case letters in this password?')
+  let lowercheck = confirm('Would you like to use lower case letters in this password?')
+  let numCheck = confirm('Would you like to use numbers in this password?')
+  let symCheck = confirm('Would you like to use symbols in this password?')
   //Checks if at least one choice was made. If password cannot generate will restart function
-  if(upperCheck === false && lowercheck === false && numCheck === false && symCheck === false) {
-    alert('You must select at least one type of character to generate password. Please try again.')
-    generatePassword();
+  while(upperCheck === false && lowercheck === false && numCheck === false && symCheck === false) {
+    alert('No values were selected. Defaulting to all characyer types')
+    upperCheck = true;
+    lowercheck = true;
+    numCheck = true;
+    symCheck = true;
   }
-  
   //Concats each string with passwordChar if character type was confirmed
-  var passwordChar = [];
+  let passwordChar = [];
   
   if (upperCheck) {
     passwordChar = passwordChar.concat(arrayOfAlphaUpper)
@@ -57,12 +58,12 @@ function generatePassword(){
   if (symCheck) {
     passwordChar = passwordChar.concat(arrayOfSym)
   }
-  
-  var randomizedPassword = ''
+  //Initialize randomPassword varible
+  let randomizedPassword;
   //Generates password with above information based on length chosen in first section of generatePassword Function
   for(i = 0; i < checkLength; i++) {
     randomizedPassword = randomizedPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)]
-  } //returns completed password for use in writePassword function
+  } //Returns completed password for use in writePassword function.
   return randomizedPassword
 }
 
