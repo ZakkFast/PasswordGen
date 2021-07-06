@@ -12,20 +12,18 @@ const arrayOfAlphaLower = Array.from(String(alphaLower), String)
 const arrayOfAlphaUpper = Array.from(String(alphaUpper), String)
 const arrayOfSym = Array.from(String(symbols), String)
 
-//Super Awesome Magic Randomizer
 
 // // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  passwordText.textContent = password; 
 }
+
 
 // Function to collect conditions for password
 function generatePassword(){
-  //Prompt to collect length of password
+  //Prompt to collect length of password used in Generation Section
   const checkLength = prompt('Please select the desired length of your password. (Between 8 and 128 characters)')
   //If selection isnt between required parameters restarts function
   if(checkLength <= 7 || checkLength >= 129) {
@@ -37,40 +35,35 @@ function generatePassword(){
   const lowercheck = confirm('Would you like to use lower case letters in this password?')
   const numCheck = confirm('Would you like to use numbers in this password?')
   const symCheck = confirm('Would you like to use symbols in this password?')
-
+  
   //Checks if at least one choice was made. If password cannot generate will restart function
   if(upperCheck === false && lowercheck === false && numCheck === false && symCheck === false) {
     alert('You must select at least one type of character to generate password. Please try again.')
     generatePassword();
   }
   
-  var password = [];
+  //Concats each string with passwordChar if character type was confirmed
+  var passwordChar = [];
   
   if (upperCheck) {
-    password = password.concat(arrayOfAlphaUpper)
+    passwordChar = passwordChar.concat(arrayOfAlphaUpper)
   }
   if (lowercheck) {
-    password = password.concat(arrayOfAlphaLower)
+    passwordChar = passwordChar.concat(arrayOfAlphaLower)
   }
   if (numCheck) {
-    password = password.concat(arrayOfNums)
+    passwordChar = passwordChar.concat(arrayOfNums)
   }
   if (symCheck) {
-    password = password.concat(arrayOfSym)
+    passwordChar = passwordChar.concat(arrayOfSym)
   }
   
   var randomizedPassword = ''
-  
-  for(i = 0; i < confirm.length; i++) {
-    randomizedPassword = randomizedPassword + password[Math.floor(Math.floor() * randomizedPassword.length)]
-  }
-  console.log(randomizedPassword)   
+  //Generates password with above information based on length chosen in first section of generatePassword Function
+  for(i = 0; i < checkLength; i++) {
+    randomizedPassword = randomizedPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)]
+  } //returns completed password for use in writePassword function
+  return randomizedPassword
 }
 
 
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-function testFun(){
-  console.log('Testing!')
-}
