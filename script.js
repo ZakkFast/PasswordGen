@@ -1,10 +1,10 @@
 var generateBtn = document.querySelector("#generate").addEventListener('click', writePassword);
 
 //Characters to be used in generation of password
-const numbers = ['123456789']
+const numbers = ['0123456789']
 const alphaLower = ['abcdefghijklmnopqrstuvwxyz']
 const alphaUpper = ['ABCDEFGHIJKLMNOPQRSTUVQXYZ']
-const symbols = ['!@#$%&*']
+const symbols = ['!@#$%&*()-_=+/?<>;:[]{}`~']
 
 // String into Array
 const arrayOfNums = Array.from(String(numbers), Number)
@@ -26,7 +26,7 @@ function generatePassword(){
   //Prompt to collect length of password used in Generation Section
   let checkLength = prompt('Please select the desired length of your password. (Between 8 and 128 characters)')
   //If selection isnt between required parameters restarts function
-  while(checkLength <= 7 || checkLength >= 129 || checkLength === NaN) {
+  while(checkLength <= 7 || checkLength >= 129 || isNaN(checkLength)) {
     alert('Password length out of paramters. Defaulting to a length of 12')
     checkLength = 12
   }

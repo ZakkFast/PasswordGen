@@ -1,7 +1,7 @@
 # Password Generator
 
 
-## What it does
+## The purpose of this app is as follows
 <pre>
 Password Generator used to create a unique password depending on user chose of the following
 critera.
@@ -31,5 +31,7 @@ and user will be asked to try again</i>
 </pre>
 
 <img src='Password-Generator.gif'>
+
+
 
 
